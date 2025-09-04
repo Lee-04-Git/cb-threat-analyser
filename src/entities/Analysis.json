@@ -1,0 +1,75 @@
+{
+  "name": "Analysis",
+  "type": "object",
+  "properties": {
+    "input_type": {
+      "type": "string",
+      "enum": [
+        "whatsapp",
+        "txt",
+        "csv",
+        "manual",
+        "url"
+      ],
+      "description": "Type of input analyzed"
+    },
+    "raw_text": {
+      "type": "string",
+      "description": "Original text content"
+    },
+    "extracted_urls": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "URLs found in the content"
+    },
+    "score": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100,
+      "description": "Risk score from 0-100"
+    },
+    "label": {
+      "type": "string",
+      "enum": [
+        "No Risk",
+        "Low Risk",
+        "High Risk"
+      ],
+      "description": "Risk classification"
+    },
+    "confidence": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "description": "Confidence level of the analysis"
+    },
+    "signals": {
+      "type": "object",
+      "description": "Detailed signal breakdown from various sources"
+    },
+    "explanation": {
+      "type": "string",
+      "description": "Human-readable explanation of the risk assessment"
+    },
+    "mitigations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Recommended mitigation steps"
+    },
+    "file_name": {
+      "type": "string",
+      "description": "Original file name if uploaded"
+    }
+  },
+  "required": [
+    "input_type",
+    "raw_text",
+    "score",
+    "label",
+    "confidence"
+  ]
+}
